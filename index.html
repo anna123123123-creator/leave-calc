@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>请假天数计算器 · Leave Days Calculator</title>
+<meta name="description" content="免费开源、纯浏览器运行的请假天数计算工具，自动排除周末和自定义节假日，支持首尾半天，算出实际请假工作日天数。不联网。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>请假<span class="accent">天数</span>计算器</h1>
+    <p class="tagline">选开始和结束日期，自动排除周末和你填写的节假日，支持首尾按半天算，算出实际请假工作日天数。纯前端计算，不联网。</p>
+  </header>
+
+  <main class="layout">
+    <section class="controls">
+      <div class="field">
+        <label>开始日期</label>
+        <input id="startInput" type="date">
+      </div>
+      <div class="field checkbox-field">
+        <label><input id="startHalfCheck" type="checkbox"> 开始日算半天</label>
+      </div>
+      <div class="field">
+        <label>结束日期</label>
+        <input id="endInput" type="date">
+      </div>
+      <div class="field checkbox-field">
+        <label><input id="endHalfCheck" type="checkbox"> 结束日算半天</label>
+      </div>
+      <div class="field checkbox-field">
+        <label><input id="excludeWeekendCheck" type="checkbox" checked> 自动排除周末</label>
+      </div>
+      <p class="tip">提示：开始/结束日期请填实际的第一个和最后一个工作日，半天选项才会生效——如果填的是周末/节假日，那天本来就不计入天数，半天勾选不会有额外效果。</p>
+      <div class="field">
+        <label>法定节假日（一行一个，YYYY-MM-DD，可选）</label>
+        <textarea id="holidaysInput" placeholder="2026-10-01
+2026-10-02"></textarea>
+      </div>
+    </section>
+
+    <section class="result-wrap">
+      <div class="result-card">
+        <div class="result-num" id="daysOut">--</div>
+        <div class="result-label">实际请假天数</div>
+      </div>
+      <div class="detail-box">
+        <div class="detail-row"><span>日期跨度总天数</span><span id="totalDaysOut" class="val"></span></div>
+        <div class="detail-row"><span>其中周末天数</span><span id="weekendDaysOut" class="val"></span></div>
+        <div class="detail-row"><span>其中法定节假日天数</span><span id="holidayDaysOut" class="val"></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>MIT 协议开源，纯前端日期计算，不联网、不上传。具体请假规则以公司实际考勤制度为准。</p>
+    <p>想要审批、考勤、项目、公告一体的完整 OA 办公系统？<a href="https://inzyxuashop.com/oa-yuanma.html" target="_blank" rel="noopener">看看完整版 OA 办公源码 →</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
